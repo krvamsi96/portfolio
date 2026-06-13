@@ -163,6 +163,7 @@ p {
 section {
   padding: 8rem 0;
   position: relative;
+  scroll-margin-top: 80px;
 }
 
 /* Glassmorphism Panel */
@@ -1163,7 +1164,29 @@ footer {
   }
   
   nav {
-    display: none; /* In production, we'll configure a lightweight responsive drawer menu */
+    display: none;
+  }
+  
+  nav.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-dark);
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 99;
+    gap: 1.75rem;
+    align-items: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-15px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
   
   .menu-btn {

@@ -399,26 +399,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mobile navigation drawer toggle
   mobileMenuBtn.addEventListener("click", () => {
-    if (navMenu.style.display === "flex") {
-      navMenu.style.display = "";
-    } else {
-      navMenu.style.display = "flex";
-      navMenu.style.flexDirection = "column";
-      navMenu.style.position = "absolute";
-      navMenu.style.top = "80px";
-      navMenu.style.left = "0";
-      navMenu.style.width = "100%";
-      navMenu.style.background = "var(--bg-dark)";
-      navMenu.style.padding = "2rem";
-      navMenu.style.borderBottom = "1px solid var(--border-color)";
-      navMenu.style.zIndex = "99";
-    }
+    const isOpen = navMenu.classList.toggle("mobile-active");
+    mobileMenuBtn.innerHTML = isOpen ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+    lucide.createIcons();
   });
 
   // Close mobile drawer on link click
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
-      navMenu.style.display = "";
+      navMenu.classList.remove("mobile-active");
+      mobileMenuBtn.innerHTML = '<i data-lucide="menu"></i>';
+      lucide.createIcons();
     });
   });
 
